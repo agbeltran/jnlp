@@ -14,54 +14,8 @@ cgitb.enable()
 
 import os.path
 
-JNLP_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
-
-<!DOCTYPE jnlp PUBLIC "-//Sun Microsystems, Inc//DTD JNLP Descriptor 6.0//EN" "http://java.sun.com/dtd/JNLP-6.0.dtd">
-<!-- doctype points to Sun, not Oracle for compatibility. -->
-<jnlp spec="6.0+" codebase=$codebase href=$href version="1.6">
-
-    <information>
-        <title>$title</title>
-        <vendor>ISA team, Oxford e-Research Centre, University of Oxford, Oxford, UK</vendor>
-        <homepage href="http://isa-tools.org" />
-        <description>$description</description>
-        <version>1.6</version>
-        <icon href=$icon/>
-        <shortcut online="true">
-            <desktop />
-            <menu submenu=$submenu />
-        </shortcut>
-        <offline-allowed/>
-    </information>
-
-    <security>
-        <all-permissions/>
-    </security>
-
-    <update check="always" policy="always" />
-
-    <resources>
-        <j2se version="1.5+" />
-        <jar href=$jar />
-    </resources>
-    <application-desc main-class=$mainclass/>
-</jnlp>
-"""
-
-#import cherrypy
-#from Genshi.template import TemplateLoader
-
-#loader = TemplateLoader(
-#    os.path.join(os.path.dirname(__file__), 'templates'),
-#    auto_reload=True
-#)
-
-#@cherrypy.expose
-#def index(self):
-#    tmpl = loader.load('template.jnlp')
-#    fs = cgi.FieldStorage()
-#    return tmpl.generate(title='ISAcreator 1.6',description='ISAcreator tool',submenu='ISAcreator',jar='http://isatab.sourceforge.net/jnlp/ISAcreator-1.6.jar').render('html', doctype='html')
-
+with open('./templates/template.jnlp', 'r') as f:
+    JNLP_TEMPLATE = f.read()
 
 def main():
     from string import Template
@@ -87,17 +41,18 @@ def main():
     mainclass = '"org.isatools.isacreator.launch.ISAcreatorApplication"'
 
 
-
-
     jnlp = Template(JNLP_TEMPLATE)
-    jnlp = jnlp.substitute(title=title,
+    jnlp = jnlp.substitute(codebase=codebase,
+                           href=href,
+                           title=title,
                            vendor=vendor,
+                           homepage=homepage,
                            description=description,
+                           version=version,
                            icon=icon,
                            submenu=submenu,
+                           j2se_version=j2se_version,
                            mainclass=mainclass,
-                           codebase=codebase,
-                           href=href,
                            jar=jar,
                            arguments=args)
 
