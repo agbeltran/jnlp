@@ -27,8 +27,8 @@ def main():
     for key in fs.keys():
         args =  args+"<argument>--"+key+"</argument>\n <argument>"+fs[key].value+"</argument>"
 
-    codebase = '"http://isatab.sourceforge.net/jnlp/"'
-    href = '"template.jnlp"'
+    codebase = '"http://toad.oerc.ox.ac.uk:8080/ISAcreator/"'
+    href = '"ISAcreator.jnlp"'
     title = '"ISAcreator 1.7"'
     vendor = '"ISA team, Oxford e-Research Centre, University of Oxford, Oxford, UK"'
     homepage = '"http://isa-tools.org"'
@@ -56,7 +56,7 @@ def main():
                            jar=jar,
                            arguments=args)
 
-    filename = "template.jnlp"
+    filename = "ISAcreator.jnlp"
 
     print "Content-Type:application/x-download\nContent-Disposition:attachment;filename=%s\n\n%s" % (filename,jnlp)
     #print "Content-Length:%s\n\n%s" %   jnlp, len(jnlp), jnlp#(os.path.split(jnlp)[-1], len(buff), buff)
