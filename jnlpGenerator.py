@@ -59,6 +59,5 @@ def main():
     filename = "ISAcreator.jnlp"
 
     print "Content-Type:application/x-download\nContent-Disposition:attachment;filename=%s\n\n%s" % (filename,jnlp)
-    #print "Content-Length:%s\n\n%s" %   jnlp, len(jnlp), jnlp#(os.path.split(jnlp)[-1], len(buff), buff)
 
 main()
