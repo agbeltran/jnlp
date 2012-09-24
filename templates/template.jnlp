@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE jnlp PUBLIC "-//Sun Microsystems, Inc//DTD JNLP Descriptor 6.0//EN" "http://java.sun.com/dtd/JNLP-6.0.dtd">
+<!-- doctype points to Sun, not Oracle for compatibility. -->
+<jnlp spec="6.0+" codebase=$codebase href=$href version="1.6">
+
+    <information>
+        <title>$title</title>
+        <vendor>$vendor</vendor>
+        <homepage href=$homepage />
+        <description>$description</description>
+        <version>$version</version>
+        <icon href=$icon/>
+        <shortcut online="true">
+            <desktop />
+            <menu submenu=$submenu />
+        </shortcut>
+        <offline-allowed/>
+    </information>
+
+    <security>
+        <all-permissions/>
+    </security>
+
+    <update check="always" policy="always" />
+
+    <resources>
+        <j2se version="1.5+" />
+        <jar href=$jar />
+    </resources>
+    <application-desc main-class=$mainclass/>
+        $arguments
+</jnlp>
