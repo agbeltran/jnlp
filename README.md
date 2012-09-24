@@ -1,2 +1,2 @@
-gs-jnlp
+Script for generating a jnlp file.
 =======
